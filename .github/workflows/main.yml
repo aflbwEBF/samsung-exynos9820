@@ -20,6 +20,11 @@ jobs:
         wget -q https://android.googlesource.com/platform/system/tools/mkbootimg/+archive/refs/heads/master.tar.gz -O - | tar xzf - mkbootimg.py
         chmod +x mkbootimg.py
         sudo mv mkbootimg.py /usr/local/bin/mkbootimg
+    - name: Install mkdtboimg
+      run: |
+        wget -q https://android.googlesource.com/platform/system/libufdt/+archive/refs/heads/master.tar.gz -O - | tar --strip-components 2 -xzf - utils/src/mkdtboimg.py
+        chmod +x mkdtboimg.py
+        sudo mv mkdtboimg.py /usr/local/bin/mkdtboimg
     - name: Install avbtool
       if: false
       run: |
