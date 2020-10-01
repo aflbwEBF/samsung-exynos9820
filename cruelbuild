@@ -450,6 +450,13 @@ def mkbootimg(os_patch_level, config, output, **files):
     else:
         fatal("Please, install 'mkbootimg'.")
 
+def mkdtboimg(config, output):
+    if tool_exists('mkdtboimg'):
+        print("Preparing {}...".format(output))
+        run(['mkdtboimg', 'cfg_create', output, config], check=True)
+    else:
+        fatal("Please, install 'mkdtboimg'.")
+
 def mkvbmeta(output):
     if tool_exists('avbtool'):
         print('Preparing vbmeta...')
@@ -601,6 +608,11 @@ if __name__ == '__main__':
                       'build.mkbootimg.' + model,
                       'CruelKernel-' + model + '.img',
                       kernel = objtree + '/arch/arm64/boot/Image')
+            try:
+                mkdtboimg('dtb.' + model,  'CruelKernel-' + model + '-dtb.img')
+                mkdtboimg('dtbo.' + model, 'CruelKernel-' + model + '-dtbo.img')
+            except Exception:
+                pass
             #mkvbmeta('vbmeta.img')
             #mkaptar(boot_img, 'vbmeta.img')
 
