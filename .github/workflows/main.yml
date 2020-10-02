@@ -1,3 +1,38 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@aflbwEBF 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+aflbwEBF
+/
+samsung-exynos9820
+forked from CruelKernel/samsung-exynos9820
+0
+087
+Code
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+04
+patch-7 @aflbwEBF  168f5da
+Build
+on: push
+ build (G975F)
+Build
+This run
+Workflow file
+.github/workflows/main.yml
 name: Build
 
 on: [push]
@@ -11,7 +46,7 @@ jobs:
 
     strategy:
       matrix:
-        model: [ "G973F" ]
+        model: [ "G975F" ]
 
     steps:
     - uses: actions/checkout@v2
@@ -49,6 +84,8 @@ jobs:
                 +ntfs                     \
                 +morosound                \
                 +boeffla_wl_blocker       \
+                +sched_powersave          \
+                +sched_performance        \
         2>&1 | tee config.info
     - name: Kernel Build
       run: ./build :build
