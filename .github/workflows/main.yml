@@ -51,7 +51,7 @@ jobs:
                 +boeffla_wl_blocker       \
                 +sched_powersave          \
                 +sched_performance        \
-    2>&1 | tee config.info
+     2>&1 | tee config.info
     - name: Kernel Build
       run: ./build :build
     - name: Create boot.img
